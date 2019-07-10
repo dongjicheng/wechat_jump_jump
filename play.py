@@ -30,7 +30,7 @@ def jump(distance):
     print(cmd)
 
 
-def get_center(img_canny, ):
+def get_center(img_canny, H):
     # 利用边缘检测的结果寻找物块的上沿和下沿
     # 进而计算物块的中心点
     y_top = np.nonzero([max(row) for row in img_canny[400:]])[0][0] + 400
@@ -93,7 +93,7 @@ for i in range(10000):
             for b in range(max_loc1[0] - 10, max_loc1[0] + 100):
                 canny_img[k][b] = 0
 
-        img_rgb, x_center, y_center = get_center(canny_img)
+        img_rgb, x_center, y_center = get_center(canny_img,H)
 
     # 将图片输出以供调试
     img_rgb = cv2.circle(img_rgb, (x_center, y_center), 10, 255, -1)
