@@ -62,7 +62,8 @@ w2, h2 = temp_white_circle.shape[::-1]
 # 循环直到游戏失败结束
 for i in range(10000):
     get_screenshot(0)
-    img_rgb = cv2.imread('%s.png' % 0, 0)
+    img_rgb = cv2.imread('%s.jpg' % 0, 0)
+    img_rgb = cv2.resize(img_rgb,(1080,1920))
 
     # 如果在游戏截图中匹配到带"再玩一局"字样的模板，则循环中止
     res_end = cv2.matchTemplate(img_rgb, temp_end, cv2.TM_CCOEFF_NORMED)
